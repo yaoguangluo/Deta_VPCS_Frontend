@@ -15,6 +15,7 @@
 ##### 已完成功能：http response 分析
 ##### 已完成功能：tcp 字节码分层
 ##### 已完成功能：tcp 握手协议
+##### 已完成功能：非rest请求走cache map功能。
 ##### 已完成功能：vpcs 进行文件validation
 ##### 已完成功能：文件response进行自适应封装
 ##### 已完成功能：angular rest call vpcs
