@@ -75,7 +75,7 @@ public class VPC {
 
 	public static String getFilePath(String string) {
 		String root = new File("src/main/resources/static").getAbsolutePath().replace("\\", "/");
-		if(string.equalsIgnoreCase("")||string.equalsIgnoreCase("/")){
+		if(null==string||string.equalsIgnoreCase("")||string.equalsIgnoreCase("/")){
 			string = "/index.html";
 		}
 		return root + string;
