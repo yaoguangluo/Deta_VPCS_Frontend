@@ -21,7 +21,8 @@ public class RequestRecordController {
 		System.out.println(mess);
 		if(null == mess){
 			vPCSResponse.returnErrorCode(400);
-			throw new Exception();
+			return;
+			//throw new Exception();
 		}
 		if(mess.equalsIgnoreCase("")){
 			vPCSResponse.returnErrorCode(400);

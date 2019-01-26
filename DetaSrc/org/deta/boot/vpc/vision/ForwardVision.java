@@ -60,7 +60,7 @@ public class ForwardVision {
 			}
 			if(filePath.contains(".wav")){
 				vPCSRequest.setRequestForwardType("bytes");
-				vPCSResponse.setResponseContentType("content-type: audio/x-wav \n\n");
+				vPCSResponse.setResponseContentType("content-type: audio/wav \n\n");
 			}
 		}
 		
