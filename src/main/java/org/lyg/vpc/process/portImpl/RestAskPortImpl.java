@@ -121,7 +121,7 @@ public class RestAskPortImpl{// implements RestAskPort {
 	@SuppressWarnings("deprecation")
 	public static Map<String, Object> feedBack(String ip, String token, String pointIp) throws Exception {
 		String json = null;
-		if(null != token){
+		if(null != token && token.equals("undefined")){
 			json = DetaDBUtil.backEndRequest("checkStatus?token=" + URLEncoder.encode(token));
 		}
 		Map<String, Object> jsonCheckMap;

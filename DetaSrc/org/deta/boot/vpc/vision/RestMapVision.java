@@ -1,5 +1,4 @@
 package org.deta.boot.vpc.vision;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
@@ -14,10 +13,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
 import org.deta.boot.rest.VPC;
 import org.lyg.cache.DetaCacheManager;
-
 public class RestMapVision {
 	public static void main(String[] args){
 
@@ -67,27 +64,34 @@ public class RestMapVision {
 			byte[] byteArray = new byte[1024];
 			int tlen = 0;
 			int len = 0;
-			list= new ArrayList<>();
+			list = new ArrayList<>();
 			while((len = fileInputStream.read(byteArray)) > 0){
-				tlen += len; 
+				tlen += len;
 				if(len != byteArray.length){
 					byte[] newByteArray = new byte[len];
+					for(int i=0; i<len; i++) {
+						newByteArray[i] = byteArray[i];
+					}
+					//byte[] bytes = GzipUtil.compress(newByteArray);
 					list.add(newByteArray.clone());
+				}else {
+					//byte[] bytes = GzipUtil.compress(byteArray);
+					list.add(byteArray.clone());
 				}
-				list.add(byteArray.clone());
 			}	
 			fileInputStream.close();
 			list.add(0, vPCSResponse.getResponseContentType().getBytes());
 			list.add(0, ("Content-Length: " + tlen + " \n").getBytes());
-//			list.add(0, ("ali-swift-global-savetime:1541207281 \n").getBytes());
-//			list.add(0, ("Cache-control: max-age=315360000 \n").getBytes());
+			list.add(0, ("Cache-control: max-age=315360000 \n").getBytes());
+			list.add(0, ("Content-Encoding:GBK \n").getBytes());
 			list.add(0, "Accept-Ranges: bytes \n".getBytes());
 			list.add(0, "http/1.1 200 ok \n".getBytes());
 			DetaCacheManager.putCacheOfBytesList(vPCSRequest.getRequestFilePath(), list);
-		}	 
+		}
+			
 		Iterator<byte[]> iterator = list.iterator();
 		while(iterator.hasNext()){
-			dataOutputStream.write(iterator.next());
+			dataOutputStream.write(iterator.next());	
 		}		
 		dataOutputStream.flush();
 		dataOutputStream.close();
@@ -100,7 +104,7 @@ public class RestMapVision {
 		}else{
 			StringBuilder stringBuilder = new StringBuilder();
 			stringBuilder.append("http/1.1 200 ok").append("\n");
-		//	stringBuilder.append("Cache-control: max-age=315360000 \n");
+			stringBuilder.append("Cache-control: max-age=315360000 \n");
 			stringBuilder.append(vPCSResponse.getResponseContentType());
 			FileInputStream fileInputStream = new FileInputStream(new File(vPCSRequest.getRequestFilePath())); 
 			InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, vPCSRequest.getRequestFileCode()); 
@@ -118,6 +122,7 @@ public class RestMapVision {
 		bufferedWriter.write(builderToString);
 		bufferedWriter.flush();
 		bufferedWriter.close();	
+	
 	}
 
 	public static void processBufferBytes(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws UnsupportedEncodingException, IOException {
