@@ -47,7 +47,7 @@ public class ForwardVision {
 			}
 			if(filePath.contains(".js") && code.equalsIgnoreCase("UTF-8")){	
 				vPCSRequest.setRequestForwardType("bytesBuffer");
-				vPCSResponse.setResponseContentType("content-type: text/javascript \n\n");
+				vPCSResponse.setResponseContentType("content-type: text/javascript; charset:UTF-8  \n\n");
 			}
 		
 			if(filePath.contains(".css")){
