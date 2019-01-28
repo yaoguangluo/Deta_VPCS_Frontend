@@ -1,4 +1,6 @@
 # Deta_VPCS_Frontend 1.0版本
+图片实例：
+https://github.com/yaoguangluo/Deta_VPCS_Frontend/blob/master/%E6%A0%B7%E5%BC%8F%E5%AE%9E%E4%BE%8B.png
 ### 新开一个用于前端vpc部署，这个架构通过原生的调用socket 握手协议进行多耦合分法路由实现。基于VPCS的控制思想，将js和html进行response，全面支持angular，整个前端架构6kb，启动9毫秒，打破市面上所有服务器结构模式。祝互联网程序员2019新年快乐！
 
 ##### 已完成功能：VPCS整站部署
