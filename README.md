@@ -36,3 +36,8 @@
 ![实例](https://github.com/yaoguangluo/Deta_VPCS_Frontend/blob/master/%E6%A0%B7%E5%BC%8F%E5%AE%9E%E4%BE%8B.png)
 
 
+
+# 感谢
+基于deta vpcs 架构部署网站在代理测试中的问题，感谢花生壳官方运维组的帮忙。
+
+
