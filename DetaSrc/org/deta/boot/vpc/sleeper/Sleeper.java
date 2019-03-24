@@ -21,38 +21,47 @@ public class Sleeper extends Thread implements Runnable{
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.controller.RequestRecordController.requestLinkRecoder(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.controller.RequestFilterController.requestIpFilter(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.controller.RequestFilterController.requestLinkFilter(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.controller.RequestFixController.requestIpFix(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.controller.RequestFixController.requestLinkFix(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.vision.ForwardVision.getForwardType(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.vision.ForwardVision.forwardToRestMap(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.vision.RestMapVision.getResponse(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;
 			}
+			Thread.sleep(30);
 			org.deta.boot.vpc.vision.RestMapVision.returnResponse(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
 				return;

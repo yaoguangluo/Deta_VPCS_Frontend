@@ -49,7 +49,7 @@ public class ServerInitController {
 		timeProcess.end();
 		System.out.println("----德塔VPCS数据库服务器启动一切正常-总耗时:" + timeProcess.duration()+ "毫秒");
 		while(true){
-			if(sleeperHall.getThreadsCount() < 15000){
+			if(sleeperHall.getThreadsCount() < 1000){
 				Sleeper sleeper = new Sleeper();
 				try {
 					sleeper.hugPillow(sleeperHall, server.accept(), sleeper.hashCode());

@@ -45,7 +45,7 @@ public class GzipUtil {
 	}
 }
 //--------------------- 
-//作者：树先生i 
+//作者：树先生i ,罗瑶光进行了修正。
 //来源：CSDN 
 //原文：https://blog.csdn.net/qq_18895659/article/details/72190322 
 //版权声明：本文为博主原创文章，转载请附上博文链接！

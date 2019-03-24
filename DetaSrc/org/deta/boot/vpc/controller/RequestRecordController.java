@@ -18,32 +18,36 @@ public class RequestRecordController {
 	public static void requestLinkRecoder(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(vPCSResponse.getSocket().getInputStream()));
 		String mess = br.readLine();
-		System.out.println(mess);
+//		System.out.println(mess);
 		if(null == mess){
-			vPCSResponse.returnErrorCode(400);
+			vPCSResponse.returnErrorCode(200);
 			return;
-			//throw new Exception();
 		}
-		if(mess.equalsIgnoreCase("")){
-			vPCSResponse.returnErrorCode(400);
-			throw new Exception();
+		if(mess.equalsIgnoreCase("") || !mess.contains("HTTP")){
+			vPCSResponse.returnErrorCode(200);
+			return;
 		}
 		String[] type = mess.split(" ");
-		if(type.length < 2){
-			vPCSResponse.returnErrorCode(500);
-			throw new Exception();
+		if(type.length < 3){
+			vPCSResponse.returnErrorCode(200);
+			return;
 		}
 		String[] content = type[1].split("\\?");
-		if(content.length == 2){
-			vPCSRequest.setRequestIsRest(true);
-			if(content[1] == null){
-				vPCSResponse.returnErrorCode(500);
-				throw new Exception();
+		if(content.length == 2) {
+			if(content[0].contains(".woff") || content[0].contains("ttf")) {
+				vPCSResponse.returnErrorCode(200);
+				return;
+			}else {
+				vPCSRequest.setRequestIsRest(true);
+				if(content[1] == null ||content[1].equals("")){
+					vPCSResponse.returnErrorCode(200);
+					return;
+				}	
 			}
+		}else {
+			vPCSRequest.setRequestIsRest(false);
 		}
-		if(content[0].contains(".")){
-			//vPCSRequest.setRequestIsRest(false);
-		}
+		
 		if(vPCSRequest.getRequestIsRest()){
 			String[] column = content[1].split("&");
 			Map<String, String> data = new ConcurrentHashMap<>();
