@@ -1,0 +1,133 @@
+body {
+	background: #EEE;
+	overflow-x: hidden;
+}
+#data-left .data-left-textarea{
+	width: 100%;
+	height:220px;
+}
+
+#data-right .data-right-textarea{
+	width: 100%;
+	height:220px;
+}
+.data-ws{
+	background: #ffff80;
+	width: 50px;
+	float:left;
+	margin-left:5px;
+	margin-top:1px;
+	height:35px;
+	width:70px;
+	text-decoration:none;
+	text-align:center;
+	font:15px '微软雅黑';
+	line-height: 30px; 
+	border-radius:7px;
+	-webkit-transition:all linear 0.30s;
+	-moz-transition:all linear 0.30s;
+	transition:all linear 0.30s;
+}
+.data-ws:hover{
+	background:rgba(39, 154, 187, 1);
+	}
+.data-cx{
+	background: #ff8080;
+	width: 50px;
+	float:left;
+	margin-left:5px;
+	margin-top:1px;
+	height:35px;
+	width:70px;
+	text-decoration:none;
+	text-align:center;
+	font:15px '微软雅黑';
+	line-height: 30px; 
+	border-radius:7px;
+	-webkit-transition:all linear 0.30s;
+	-moz-transition:all linear 0.30s;
+	transition:all linear 0.30s;
+}
+.data-cx:hover{
+	background:rgba(39, 154, 187, 1);
+	}
+.data-cy{
+	background: #80ff80;
+	width: 50px;
+	float:left;
+	margin-left:5px;
+	margin-top:1px;
+	height:35px;
+	width:70px;
+	text-decoration:none;
+	text-align:center;
+	font:15px '微软雅黑';
+	line-height: 30px; 
+	border-radius:7px;
+	-webkit-transition:all linear 0.30s;
+	-moz-transition:all linear 0.30s;
+	transition:all linear 0.30s;
+}
+.data-cy:hover{
+	background:rgba(39, 154, 187, 1);
+	}
+.data-cg{
+	background: #80ffff;
+	width: 50px;
+	float:left;
+	margin-left:5px;
+	margin-top:1px;
+	height:35px;
+	width:70px;
+	text-decoration:none;
+	text-align:center;
+	font:15px '微软雅黑';
+	line-height: 30px; 
+	border-radius:7px;
+	-webkit-transition:all linear 0.30s;
+	-moz-transition:all linear 0.30s;
+	transition:all linear 0.30s;
+}
+.data-cg:hover{
+	background:rgba(39, 154, 187, 1);
+	}
+.data-cj{
+	background: #ff80ff;
+	width: 50px;
+	float:left;
+	margin-left:5px;
+	margin-top:1px;
+	height:35px;
+	width:70px;
+	text-decoration:none;
+	text-align:center;
+	font:15px '微软雅黑';
+	line-height: 30px; 
+	border-radius:7px;
+	-webkit-transition:all linear 0.30s;
+	-moz-transition:all linear 0.30s;
+	transition:all linear 0.30s;
+}
+.data-cj:hover{
+	background:rgba(39, 154, 187, 1);
+	}
+.data-cl{
+	background: #ecb7e0;
+	width: 50px;
+	float:left;
+	margin-left:5px;
+	margin-top:1px;
+	height:35px;
+	width:70px;
+	text-decoration:none;
+	text-align:center;
+	font:15px '微软雅黑';
+	line-height: 30px; 
+	border-radius:7px;
+	-webkit-transition:all linear 0.30s;
+	-moz-transition:all linear 0.30s;
+	transition:all linear 0.30s;
+}
+.data-cl:hover{
+	background:rgba(39, 154, 187, 1);
+	}

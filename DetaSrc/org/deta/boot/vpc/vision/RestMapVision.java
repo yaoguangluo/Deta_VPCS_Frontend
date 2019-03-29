@@ -42,8 +42,7 @@ public class RestMapVision {
 		String output = VPC.forward(vPCSRequest.getRequestLink(), vPCSRequest.getRequestValue());
 		PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(vPCSResponse.getSocket()
 				.getOutputStream(),"UTF-8")),true);
-		pw.println("HTTP/1.1 200 OK\n"); 
-		pw.println("Host:deta software  \n\n"); 
+		pw.println("HTTP/1.1 200 OK\n\n"); 
 		output=output.charAt(0)=='"'?output.substring(1,output.length()):output;
 		output=output.charAt(output.length()-1)=='"'?output.substring(0
 				, output.length()-1):output;
@@ -81,7 +80,7 @@ public class RestMapVision {
 			list.add(0, ("Content-Encoding:Gzip \n").getBytes("UTF8"));
 			list.add(0, "Accept-Ranges: bytes \n".getBytes("UTF8"));
 			list.add(0, "Host:deta software  \n".getBytes("UTF8"));
-			list.add(0, "http/1.1 200 ok \n".getBytes("UTF8"));
+			list.add(0, "HTTP/1.1 200 OK \n".getBytes("UTF8"));
 			list.add(sniper);
 			DetaCacheManager.putCacheOfBytesList(vPCSRequest.getRequestFilePath(), list);
 		}	
@@ -99,7 +98,7 @@ public class RestMapVision {
 			builderToString = DetaCacheManager.getCacheOfString(vPCSRequest.getRequestFilePath());
 		}else{
 			StringBuilder stringBuilder = new StringBuilder();
-			stringBuilder.append("http/1.1 200 ok").append("\n");
+			stringBuilder.append("HTTP/1.1 200 OK").append("\n");
 			stringBuilder.append("Host:deta software  \n");
 			stringBuilder.append("Cache-control: max-age=315360000 \n");
 			stringBuilder.append(vPCSResponse.getResponseContentType());
@@ -118,13 +117,12 @@ public class RestMapVision {
 				, vPCSRequest.getRequestFileCode()));
 		bufferedWriter.write(builderToString);
 		bufferedWriter.flush();
-		bufferedWriter.close();	
-	
+		bufferedWriter.close();
 	}
 
 	public static void processBufferBytes(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws UnsupportedEncodingException, IOException {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("http/1.1 200 ok").append("\n");
+		stringBuilder.append("HTTP/1.1 200 OK").append("\n");
 		stringBuilder.append("Host:deta software  \n");
 		stringBuilder.append("Cache-control: max-age=315360000 \n");
 		stringBuilder.append("Content-Encoding:gzip \n");
@@ -148,6 +146,41 @@ public class RestMapVision {
 		DataOutputStream dataOutputStream = new DataOutputStream(vPCSResponse.getSocket().getOutputStream());
 		dataOutputStream.write(builderToString.getBytes("UTF8"));
 		dataOutputStream.write(GzipUtil.compress(contentBuilderToString.getBytes("UTF8")));
+		dataOutputStream.flush();
+		dataOutputStream.close();
+	}
+
+	public static void processBytesWithoutZip(VPCSRequest vPCSRequest, VPCSResponse vPCSResponse) throws IOException {
+		List<byte[]> list;
+		DataOutputStream dataOutputStream = new DataOutputStream(vPCSResponse.getSocket().getOutputStream());
+		if(DetaCacheManager.getCacheOfBytesList(vPCSRequest.getRequestFilePath()) != null){
+			list = DetaCacheManager.getCacheOfBytesList(vPCSRequest.getRequestFilePath());
+		}else{
+			FileInputStream fileInputStream = new FileInputStream(new File(vPCSRequest.getRequestFilePath()));
+			ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+			byte[] byteArray = new byte[1024];
+			int len = 0;
+			list = new ArrayList<>();
+			//这段while函数思想来自 这篇文章：https://blog.csdn.net/top_code/article/details/41042413
+			//非常轻松处理len的长度溢出。谢谢。
+			while((len = fileInputStream.read(byteArray, 0, 1024))!=-1){
+				byteArrayOutputStream.write(byteArray, 0, len);
+			}
+			fileInputStream.close();
+			byte[] sniper =byteArrayOutputStream.toByteArray();
+			list.add(0, vPCSResponse.getResponseContentType().getBytes("UTF8"));
+			list.add(0, ("Content-Length: " + sniper.length + " \n").getBytes("UTF8"));
+			list.add(0, ("Cache-control: max-age=315360000 \n").getBytes("UTF8"));
+			list.add(0, "Accept-Ranges: bytes \n".getBytes("UTF8"));
+			list.add(0, "Host:deta software  \n".getBytes("UTF8"));
+			list.add(0, "HTTP/1.1 200 OK \n".getBytes("UTF8"));
+			list.add(sniper);
+			DetaCacheManager.putCacheOfBytesList(vPCSRequest.getRequestFilePath(), list);
+		}	
+		Iterator<byte[]> iterator = list.iterator();
+		while(iterator.hasNext()){
+			dataOutputStream.write(iterator.next());	
+		}	
 		dataOutputStream.flush();
 		dataOutputStream.close();
 	}

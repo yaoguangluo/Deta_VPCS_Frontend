@@ -63,6 +63,24 @@ public class VPC {
 		if(string.equalsIgnoreCase("/getAskers")){
 			return VtoV.ObjectToJsonString(RestAskPortImpl.getAskers(data.get("token")));
 		}	
+		if(string.equalsIgnoreCase("/dataWS")){
+			return RestAskPortImpl.dataWS(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataCX")){
+			return RestAskPortImpl.dataCX(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataCY")){
+			return RestAskPortImpl.dataCY(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataCG")){
+			return RestAskPortImpl.dataCG(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataCJ")){
+			return RestAskPortImpl.dataCJ(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataCL")){
+			return RestAskPortImpl.dataCL(data.get("message"));
+		}	
 		return "";
 	}
 

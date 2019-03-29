@@ -39,7 +39,6 @@ am.controller('index', ['$cookieStore', '$scope', '$http', '$compile', function 
 	getUserIP(function(ip){
 		$cookieStore.put("ip", ip);
 	});
-
 	$scope.logout = function (email, token) {	
 		console.info(email);
 		$http.get('logout?uEmail=' + encodeURIComponent(email)
@@ -155,14 +154,12 @@ am.controller('index', ['$cookieStore', '$scope', '$http', '$compile', function 
 	}
 
 	$scope.getAskers = function () {	
-		console.log(11);
 		$http.post('getAskers?token=' + encodeURIComponent($scope.token))
 		.then(function successCallback(response) {
 			$scope.loginInfo = response.data.loginInfo;
 			$scope.returnResult = response.data.returnResult;
 			if($scope.loginInfo == 'unsuccess'){
 			}else{
-				console.log(111);
 				console.log($scope.askers);
 				$scope.askers = response.data.obj;
 				var html="";
@@ -179,7 +176,7 @@ am.controller('index', ['$cookieStore', '$scope', '$http', '$compile', function 
 				$("#askinfo-select").append($html);
 			}
 		}, function errorCallback(response) {
-			alert("查询请求错误！" + $scope.loginInfo + ' ' + $scope.returnResult);
+			//alert("查询请求错误！" + $scope.loginInfo + ' ' + $scope.returnResult);
 		});
 	}
 }]);

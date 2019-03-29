@@ -59,7 +59,7 @@ public class ForwardVision {
 				vPCSResponse.setResponseContentType("content-type: text/html \n\n");
 			}
 			if(filePath.contains(".wav")){
-				vPCSRequest.setRequestForwardType("bytes");
+				vPCSRequest.setRequestForwardType("bytesWithoutZip");
 				vPCSResponse.setResponseContentType("content-type: audio/wav \n\n");
 			}
 		}
@@ -82,6 +82,9 @@ public class ForwardVision {
 		}
 		if(vPCSRequest.getRequestForwardType().equalsIgnoreCase("bytesBuffer")){
 			RestMapVision.processBufferBytes(vPCSRequest, vPCSResponse);
+		}
+		if(vPCSRequest.getRequestForwardType().equalsIgnoreCase("bytesWithoutZip")){
+			RestMapVision.processBytesWithoutZip(vPCSRequest, vPCSResponse);
 		}
 	}
 }

@@ -19,57 +19,67 @@ public class Sleeper extends Thread implements Runnable{
 		try{
 			org.deta.boot.vpc.controller.RequestRecordController.requestIpRecoder(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
-			Thread.sleep(30);
+			Thread.sleep(70);
 			org.deta.boot.vpc.controller.RequestRecordController.requestLinkRecoder(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
-			Thread.sleep(30);
+			Thread.sleep(70);
 			org.deta.boot.vpc.controller.RequestFilterController.requestIpFilter(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
-			Thread.sleep(30);
+			Thread.sleep(70);
 			org.deta.boot.vpc.controller.RequestFilterController.requestLinkFilter(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
-			Thread.sleep(30);
+			Thread.sleep(70);
 			org.deta.boot.vpc.controller.RequestFixController.requestIpFix(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
-			Thread.sleep(30);
+			Thread.sleep(70);
 			org.deta.boot.vpc.controller.RequestFixController.requestLinkFix(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
-			Thread.sleep(30);
+			Thread.sleep(70);
 			org.deta.boot.vpc.vision.ForwardVision.getForwardType(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
-			Thread.sleep(30);
+			Thread.sleep(70);
 			org.deta.boot.vpc.vision.ForwardVision.forwardToRestMap(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
-			Thread.sleep(30);
+			Thread.sleep(70);
 			org.deta.boot.vpc.vision.RestMapVision.getResponse(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
 			Thread.sleep(30);
 			org.deta.boot.vpc.vision.RestMapVision.returnResponse(vPCSRequest, vPCSResponse);
 			if(vPCSResponse.getSocket().isClosed()) {
+				vPCSResponse.returnErrorCode(200);
 				return;
 			}
 		}catch(Exception e){
-			e.printStackTrace();
 			try {
-				vPCSResponse.returnErrorCode(500);
+				vPCSResponse.returnErrorCode(200);
+				e.printStackTrace();
 			} catch (IOException e1) {
 				System.gc();
 			}

@@ -1,5 +1,7 @@
 package org.lyg.vpc.process.portImpl;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import java.util.ArrayList;
@@ -16,7 +18,7 @@ public class RestAskPortImpl{// implements RestAskPort {
 	@SuppressWarnings("deprecation")
 	public static Map<String, Object> ask(String ip, String token, String message, String pointIp) throws Exception {
 		String json = null;
-		if(token != null){
+		if(token != null && !token.equalsIgnoreCase("undefined")){
 			json = DetaDBUtil.backEndRequest("checkStatus?token=" + URLEncoder.encode(token));
 		}
 		Map<String, Object> jsonCheckMap;
@@ -32,7 +34,7 @@ public class RestAskPortImpl{// implements RestAskPort {
 			jsonCheckMap = VtoV.JsonObjectToMap(new JSONObject(json));	
 			Map<String, Object> out = new HashMap<>();
 			String object = DetaDBUtil.cacheRequest("get?key=" + pointIp + "&email=" 
-					+ "313699483@qq.com" + "&password=" + "Fengyue1985!");
+					+ URLEncoder.encode("313699483@qq.com", "UTF-8") + "&password=" + URLEncoder.encode("Fengyue1985!", "UTF-8"));
 			boolean check = true;
 			if(null == object){
 				check = false;
@@ -68,15 +70,15 @@ public class RestAskPortImpl{// implements RestAskPort {
 			jobj.put(talk);
 			DetaDBUtil.cacheRequest("put?key=" + pointIp + "&value=" + URLEncoder.encode(jobj.toString(), "UTF-8") 
 			+ "&time=" + (System.currentTimeMillis()+900000) 
-			+ "&email=" + "313699483@qq.com" + "&password=" + "Fengyue1985!");
+			+ "&email=" + URLEncoder.encode("313699483@qq.com", "UTF-8") + "&password=" + URLEncoder.encode("Fengyue1985!", "UTF-8"));
+			out.put("obj", VtoV.JsonArrayToList(jobj));
 			out.put("loginInfo", "success");
 			out.put("returnResult", "发送成功");
 			return out;
 		}
 		Map<String, Object> out = new HashMap<>();
 		String object = DetaDBUtil.cacheRequest("get?key=" + "Ask:" + ip + "&email=" 
-				+ "313699483@qq.com" + "&password=" + "Fengyue1985!");
-	//	object=object.substring(1, object.length()-1);
+				+ URLEncoder.encode("313699483@qq.com", "UTF-8") + "&password=" + URLEncoder.encode("Fengyue1985!", "UTF-8"));
 		boolean check = true;
 		if(null == object){
 			check = false;
@@ -112,7 +114,8 @@ public class RestAskPortImpl{// implements RestAskPort {
 		jobj.put(talk);
 		DetaDBUtil.cacheRequest("put?key=" + "Ask:" + ip + "&value=" + URLEncoder.encode(jobj.toString(), "UTF-8") 
 		+ "&time=" +(System.currentTimeMillis()+900000) 
-		+ "&email=" + "313699483@qq.com" + "&password=" + "Fengyue1985!");
+		+ "&email=" + URLEncoder.encode("313699483@qq.com", "UTF-8") + "&password=" + URLEncoder.encode("Fengyue1985!", "UTF-8"));
+		out.put("obj", VtoV.JsonArrayToList(jobj));
 		out.put("loginInfo", "success");
 		out.put("returnResult", "发送成功");
 		return out;
@@ -121,7 +124,7 @@ public class RestAskPortImpl{// implements RestAskPort {
 	@SuppressWarnings("deprecation")
 	public static Map<String, Object> feedBack(String ip, String token, String pointIp) throws Exception {
 		String json = null;
-		if(null != token && token.equals("undefined")){
+		if(null != token && !token.equals("undefined")){
 			json = DetaDBUtil.backEndRequest("checkStatus?token=" + URLEncoder.encode(token));
 		}
 		Map<String, Object> jsonCheckMap;
@@ -137,7 +140,7 @@ public class RestAskPortImpl{// implements RestAskPort {
 			jsonCheckMap = VtoV.JsonObjectToMap(new JSONObject(json));	
 			Map<String, Object> out = new HashMap<>();
 			String object = DetaDBUtil.cacheRequest("get?key=" + URLEncoder.encode(pointIp, "UTF-8") 
-			+ "&email=" + "313699483@qq.com" + "&password=" + "Fengyue1985!");
+			+ "&email=" + URLEncoder.encode("313699483@qq.com") + "&password=" + URLEncoder.encode("Fengyue1985!", "UTF-8"));
 			boolean check = true;
 			if(null == object){
 				check = false;
@@ -168,7 +171,7 @@ public class RestAskPortImpl{// implements RestAskPort {
 		}
 		Map<String, Object> out = new HashMap<>();
 		String object = DetaDBUtil.cacheRequest("get?key=" + "Ask:" + URLEncoder.encode(ip, "UTF-8") + "&email=" 
-				+ "313699483@qq.com" + "&password=" + "Fengyue1985!");
+				+ URLEncoder.encode("313699483@qq.com") + "&password=" + URLEncoder.encode("Fengyue1985!", "UTF-8"));
 		boolean check = true;
 		if(null == object){
 			check = false;
@@ -249,5 +252,42 @@ public class RestAskPortImpl{// implements RestAskPort {
 		out.put("loginInfo", "unsuccess");
 		out.put("returnResult", "数据超时");
 		return out;
+	}
+
+	public static Map<String, Object> recordIp(String string) {
+		Map<String, Object> out = new HashMap<>();
+		out.put("loginInfo", "success");
+		out.put("returnResult", "已经获取");
+		return out;
+	}
+
+	public static String dataWS(String string) throws IOException {
+		String object = DetaDBUtil.backEndRequest("dataWS?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataCX(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataCX?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataCY(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataCY?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataCG(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataCG?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataCJ(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataCJ?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataCL(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataCL?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
 	}
 }

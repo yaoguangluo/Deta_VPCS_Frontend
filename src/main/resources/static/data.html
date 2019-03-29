@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<link rel="icon" href="images/logo/logo.png" type="image/x-icon">
+<title>浏阳德塔软件开发有限公司</title>
+<!-- Bootstrap -->
+<script src="node_modules/angular/angular.min.js"></script>
+<script src="node_modules/angular/angular-cookies.js"></script>
+<script src="test/data.js"></script>
+<link rel="stylesheet" type="text/css" href="css/data.css" />
+</head>
+<body class="light-theme">
+	<div ng-app="data" ng-controller="data">
+		<div id="data-left" class="data-left">
+			<textarea id="data-left-textarea" class="data-left-textarea"
+				rows="10">亲,请在这输入广告词优化: 当前科技发展日新月异,造就百度,阿里,淘宝,腾迅,京东等优秀上市企业.
+不仅在科技界,社会各个层面都正在拥抱这人类智慧沉淀的结晶. 
+浏阳德塔软件开发有限公司在大数据领域是个新手,探索和继承永远是我们的主题.
+http://tinos.qicp.vip
+http://github.com/yaoguangluo
+面对这些挑战,德塔向前辈们学习套路和心法,不断改变自己.同时分享自己的最新
+研究成果,监督合作,加快商业化步伐,让世界更开心,更健康的享用商品的价值.
+			</textarea>
+		</div>
+		<div id="data-mid" class="data-mid">
+			<div type="button" id="data-ws" class="data-ws" href="#" ng-click='dataWS()'>分词</div>
+			<div type="button" id="data-cx" class="data-cx" href="#" ng-click='dataCX()'>词性</div>
+			<div type="button" id="data-cy" class="data-cy" href="#" ng-click='dataCY()'>词意</div>
+			<div type="button" id="data-cg" class="data-cg" href="#" ng-click='dataCG()'>词感</div>
+			<div type="button" id="data-cj" class="data-cj" href="#" ng-click='dataCJ()'>词境</div>
+			<div type="button" id="data-cl" class="data-cl" href="#" ng-click='dataCL()'>词灵</div>
+		</div>
+		<div id="data-right" class="data-right">
+			<textarea id="data-right-textarea" class="data-right-textarea"
+				rows="10">亲,运行后,在这里看结果.
+			</textarea>
+		</div>
+	</div>
+</body>
+</html>
