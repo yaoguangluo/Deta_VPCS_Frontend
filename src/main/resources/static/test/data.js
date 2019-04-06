@@ -49,12 +49,13 @@ am.controller('data', ['$cookieStore', '$scope', '$http', '$compile', function (
 				});
 	}
 	$scope.dataCL = function () {
-		var askMessage = document.getElementById("data-left-textarea").value;
-		$http.post('dataCL?message=' + encodeURIComponent(askMessage))
-				.then(function successCallback(response) {
-					document.getElementById("data-right-textarea").value 
-					= decodeURIComponent(response.data.cl,"UTF-8"); 
-				}, function errorCallback(response) {
-				});
+		window.location.href='http://tinos.qicp.vip/loginto.html';
+//		var askMessage = document.getElementById("data-left-textarea").value;
+//		$http.post('dataCL?message=' + encodeURIComponent(askMessage))
+//				.then(function successCallback(response) {
+//					document.getElementById("data-right-textarea").value 
+//					= decodeURIComponent(response.data.cl,"UTF-8"); 
+//				}, function errorCallback(response) {
+//				});
 	}
 }]);

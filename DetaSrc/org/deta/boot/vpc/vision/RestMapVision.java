@@ -86,7 +86,34 @@ public class RestMapVision {
 		}	
 		Iterator<byte[]> iterator = list.iterator();
 		while(iterator.hasNext()){
-			dataOutputStream.write(iterator.next());	
+			byte[] bytes= null;
+			int i= 0;
+			try {
+				bytes= iterator.next();
+				if(bytes.length>10000) {
+					int last= bytes.length%10000;
+					for(i= 0; i< bytes.length-10000; i+= 10000) {
+						byte[] serparBytes = new byte[10000];
+						for(int j= 0; j< 10000; j++) {
+							serparBytes[j]= bytes[i+ j];
+						}
+						dataOutputStream.write(serparBytes);
+						dataOutputStream.flush();
+					}
+					byte[] serparBytes = new byte[last];
+					i-=10000;
+					for(int j=0; j<last;j++) {
+						serparBytes[j]= bytes[i+ j];
+					}
+					dataOutputStream.write(serparBytes);
+				}else {
+					dataOutputStream.write(bytes);
+				}
+			}catch(Exception e) {
+				System.out.print(i);
+				System.out.print(bytes.length);
+				e.printStackTrace();
+			}
 		}	
 		dataOutputStream.flush();
 		dataOutputStream.close();
@@ -179,7 +206,34 @@ public class RestMapVision {
 		}	
 		Iterator<byte[]> iterator = list.iterator();
 		while(iterator.hasNext()){
-			dataOutputStream.write(iterator.next());	
+			byte[] bytes = null;
+			int i= 0;
+			try {
+				bytes=iterator.next();
+				if(bytes.length>10000) {
+					int last= bytes.length%10000;
+					for(i= 0; i< bytes.length-10000; i+= 10000) {
+						byte[] serparBytes = new byte[10000];
+						for(int j= 0; j< 10000; j++) {
+							serparBytes[j]= bytes[i+ j];
+						}
+						dataOutputStream.write(serparBytes);
+						dataOutputStream.flush();
+					}
+					byte[] serparBytes = new byte[last];
+					i-=10000;
+					for(int j=0; j<last;j++) {
+						serparBytes[j]= bytes[i+ j];
+					}
+					dataOutputStream.write(serparBytes);
+				}else {
+					dataOutputStream.write(bytes);
+				}
+			}catch(Exception e) {
+				System.out.print(i);
+				System.out.print(bytes.length);
+				e.printStackTrace();
+			}
 		}	
 		dataOutputStream.flush();
 		dataOutputStream.close();

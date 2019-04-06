@@ -36,21 +36,6 @@ public class RequestRecordController {
 			return;
 		}
 		System.out.println(type[1]);
-		
-//		if(type[1].equalsIgnoreCase("/")||type[1].equalsIgnoreCase("/index.html")) {
-//			String reg = "";
-//			int count=0;
-//			while((reg=br.readLine())!=null){
-//				if(reg.contains("localhost")) {
-//					System.out.println(reg);
-//					break;
-//				}
-//				if(count++==8) {
-//					System.out.println(reg);
-//					break;
-//				}
-//			}	
-//		}
 		String[] content = type[1].split("\\?");
 		if(content.length == 2) {
 			if(content[0].contains(".woff")|| content[0].contains(".ttf")) {
