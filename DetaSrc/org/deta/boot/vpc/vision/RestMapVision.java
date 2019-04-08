@@ -101,7 +101,7 @@ public class RestMapVision {
 						dataOutputStream.flush();
 					}
 					byte[] serparBytes = new byte[last];
-					i-=10000;
+//					i-=10000;
 					for(int j=0; j<last;j++) {
 						serparBytes[j]= bytes[i+ j];
 					}
@@ -212,7 +212,7 @@ public class RestMapVision {
 				bytes=iterator.next();
 				if(bytes.length>10000) {
 					int last= bytes.length%10000;
-					for(i= 0; i< bytes.length-10000; i+= 10000) {
+					for(i= 0; i< bytes.length- 10000; i+= 10000) {
 						byte[] serparBytes = new byte[10000];
 						for(int j= 0; j< 10000; j++) {
 							serparBytes[j]= bytes[i+ j];
@@ -221,7 +221,7 @@ public class RestMapVision {
 						dataOutputStream.flush();
 					}
 					byte[] serparBytes = new byte[last];
-					i-=10000;
+//					i-=10000;
 					for(int j=0; j<last;j++) {
 						serparBytes[j]= bytes[i+ j];
 					}
