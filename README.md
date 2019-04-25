@@ -35,7 +35,7 @@
 ##### 正在做功能：进行代理访问时候的header标示处理。
 ##### 未完成功能：页面js控件美观设计
 ##### 未完成功能：页面js动态功能控件设计
-![实例](https://github.com/yaoguangluo/Deta_VPCS_Frontend/blob/master/%E6%A0%B7%E5%BC%8F%E5%AE%9E%E4%BE%8B.png)
+![实例](https://github.com/yaoguangluo/Deta_VPCS_Frontend/blob/master/DETA%2020190426.jpg)
 
 
 
