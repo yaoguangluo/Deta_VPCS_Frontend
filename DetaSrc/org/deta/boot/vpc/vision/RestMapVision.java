@@ -112,6 +112,8 @@ public class RestMapVision {
 			}catch(Exception e) {
 				System.out.print(i);
 				System.out.print(bytes.length);
+				System.out.print(vPCSRequest.getRequestLink());
+				System.out.print(vPCSRequest.getRequestFilePath());
 				e.printStackTrace();
 			}
 		}	
@@ -172,7 +174,37 @@ public class RestMapVision {
 		}	
 		DataOutputStream dataOutputStream = new DataOutputStream(vPCSResponse.getSocket().getOutputStream());
 		dataOutputStream.write(builderToString.getBytes("UTF8"));
-		dataOutputStream.write(GzipUtil.compress(contentBuilderToString.getBytes("UTF8")));
+		byte[] bytes= null;
+		int i= 0;
+		try {
+			bytes=GzipUtil.compress(contentBuilderToString.getBytes("UTF8"));
+			if(bytes.length>10000) {
+				int last= bytes.length%10000;
+				for(i= 0; i< bytes.length- 10000; i+= 10000) {
+					byte[] serparBytes = new byte[10000];
+					for(int j= 0; j< 10000; j++) {
+						serparBytes[j]= bytes[i+ j];
+					}
+					dataOutputStream.write(serparBytes);
+					dataOutputStream.flush();
+				}
+				byte[] serparBytes = new byte[last];
+//				i-=10000;
+				for(int j=0; j<last;j++) {
+					serparBytes[j]= bytes[i+ j];
+				}
+				dataOutputStream.write(serparBytes);
+			}else {
+				dataOutputStream.write(bytes);
+			}
+		}catch(Exception e) {
+			System.out.print(i);
+			System.out.print(bytes.length);
+			System.out.print(vPCSRequest.getRequestLink());
+			System.out.print(vPCSRequest.getRequestFilePath());
+			e.printStackTrace();
+		}
+		//dataOutputStream.write(GzipUtil.compress(contentBuilderToString.getBytes("UTF8")));
 		dataOutputStream.flush();
 		dataOutputStream.close();
 	}
@@ -232,6 +264,8 @@ public class RestMapVision {
 			}catch(Exception e) {
 				System.out.print(i);
 				System.out.print(bytes.length);
+				System.out.print(vPCSRequest.getRequestLink());
+				System.out.print(vPCSRequest.getRequestFilePath());
 				e.printStackTrace();
 			}
 		}	

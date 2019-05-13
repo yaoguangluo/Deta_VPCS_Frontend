@@ -62,6 +62,18 @@ public class ForwardVision {
 				vPCSRequest.setRequestForwardType("bytesWithoutZip");
 				vPCSResponse.setResponseContentType("content-type: audio/wav \n\n");
 			}
+			if(filePath.contains(".txt")){
+				vPCSRequest.setRequestForwardType("bytesWithoutZip");
+				vPCSResponse.setResponseContentType("content-type: text/plain \n\n");
+			}
+			if(filePath.contains(".xml")){
+				vPCSRequest.setRequestForwardType("bytesWithoutZip");
+				vPCSResponse.setResponseContentType("content-type: application/xml \n\n");
+			}
+			if(filePath.contains(".jar")){
+				//vPCSRequest.setRequestForwardType("bytesWithoutZip");
+				//vPCSResponse.setResponseContentType("content-type: application/x-java-applet \n\n");
+			}
 		}
 		
 	}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+	xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+	xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>http://tinos.qicp.vip/index.html</loc>
+		<lastmod>2019-04-28</lastmod>
+		<changefreq>hourly</changefreq>
+		<priority>1</priority>
+
+	</url>
+	<url>
+		<loc>http://tinos.qicp.vip/data.html</loc>
+		<lastmod>2019-04-28</lastmod>
+		<changefreq>hourly</changefreq>
+		<priority>1</priority>
+	</url>
+</urlset>

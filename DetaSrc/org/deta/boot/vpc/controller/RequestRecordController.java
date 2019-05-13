@@ -39,8 +39,8 @@ public class RequestRecordController {
 		String[] content = type[1].split("\\?");
 		if(content.length == 2) {
 			if(content[0].contains(".woff")|| content[0].contains(".ttf")) {
-				vPCSResponse.returnErrorCode(200);
 				vPCSRequest.setRequestIsRest(false);
+				vPCSResponse.returnErrorCode(200);
 				String reg = "";
 				int count=0;
 				while((reg=br.readLine())!=null){
@@ -50,12 +50,12 @@ public class RequestRecordController {
 					}
 				}	
 				return;
-			}else if(content[0].equalsIgnoreCase("/")||content[0].equalsIgnoreCase("/index.html")
-					|| content[0].contains(".js")|| content[0].contains(".css")){
+			}else if(content[0].equalsIgnoreCase("/")|| content[0].contains(".js")|| content[0].contains(".css")
+					|| content[0].contains(".html")){
 				vPCSRequest.setRequestIsRest(false);	
 			}else {
 				vPCSRequest.setRequestIsRest(true);
-				if(content[1] == null ||content[1].equals("")){
+				if(content[1] == null ||content[1].equals("")||!content[1].contains("=")){
 					vPCSResponse.returnErrorCode(200);
 					return;
 				}	

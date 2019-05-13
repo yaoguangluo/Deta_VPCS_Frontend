@@ -290,4 +290,34 @@ public class RestAskPortImpl{// implements RestAskPort {
 		String object = DetaDBUtil.backEndRequest("dataCL?input=" + URLEncoder.encode(string, "UTF-8"));
 		return object;
 	}
+
+	public static String dataXX(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataXX?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataHF(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataHF?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataCP(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataCP?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataZF(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataZF?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataXL(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataXL?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
+
+	public static String dataRN(String string) throws UnsupportedEncodingException, IOException {
+		String object = DetaDBUtil.backEndRequest("dataRN?input=" + URLEncoder.encode(string, "UTF-8"));
+		return object;
+	}
 }

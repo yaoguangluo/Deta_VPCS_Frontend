@@ -29,6 +29,24 @@ am.controller('data', ['$cookieStore', '$scope', '$http', '$compile', function (
 				}, function errorCallback(response) {
 				});
 	}
+	$scope.dataXL = function () {
+		var askMessage = document.getElementById("data-left-textarea").value;
+		$http.post('dataXL?message=' + encodeURIComponent(askMessage))
+				.then(function successCallback(response) {
+					document.getElementById("data-right-textarea").value
+					= decodeURIComponent(response.data.xl,"UTF-8"); 
+				}, function errorCallback(response) {
+				});
+	}
+	$scope.dataRN = function () {
+		var askMessage = document.getElementById("data-left-textarea").value;
+		$http.post('dataRN?message=' + encodeURIComponent(askMessage))
+				.then(function successCallback(response) {
+					document.getElementById("data-right-textarea").value
+					= decodeURIComponent(response.data.rn,"UTF-8"); 
+				}, function errorCallback(response) {
+				});
+	}
 	
 	$scope.dataCG = function () {
 		var askMessage = document.getElementById("data-left-textarea").value;
@@ -57,5 +75,45 @@ am.controller('data', ['$cookieStore', '$scope', '$http', '$compile', function (
 //					= decodeURIComponent(response.data.cl,"UTF-8"); 
 //				}, function errorCallback(response) {
 //				});
+	}
+	
+	$scope.dataXX= function () {
+		var askMessage = document.getElementById("data-left-textarea").value;
+		$http.post('dataXX?message=' + encodeURIComponent(askMessage))
+				.then(function successCallback(response) {
+					document.getElementById("data-right-textarea").value 
+					= decodeURIComponent(response.data.xx,"UTF-8"); 
+				}, function errorCallback(response) {
+				});
+	}
+	
+	$scope.dataHF= function () {
+		var askMessage = document.getElementById("data-left-textarea").value;
+		$http.post('dataHF?message=' + encodeURIComponent(askMessage))
+				.then(function successCallback(response) {
+					document.getElementById("data-right-textarea").value 
+					= decodeURIComponent(response.data.hf,"UTF-8"); 
+				}, function errorCallback(response) {
+				});
+	}
+	
+	$scope.dataCP= function () {
+		var askMessage = document.getElementById("data-left-textarea").value;
+		$http.post('dataCP?message=' + encodeURIComponent(askMessage))
+				.then(function successCallback(response) {
+					document.getElementById("data-right-textarea").value 
+					= decodeURIComponent(response.data.cp,"UTF-8"); 
+				}, function errorCallback(response) {
+				});
+	}
+	
+	$scope.dataZF= function () {
+		var askMessage = document.getElementById("data-left-textarea").value;
+		$http.post('dataZF?message=' + encodeURIComponent(askMessage))
+				.then(function successCallback(response) {
+					document.getElementById("data-right-textarea").value 
+					= decodeURIComponent(response.data.zf,"UTF-8"); 
+				}, function errorCallback(response) {
+				});
 	}
 }]);

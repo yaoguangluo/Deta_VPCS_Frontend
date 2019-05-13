@@ -28,7 +28,7 @@ public class ServerInitController {
 			server = new ServerSocket(port);
 			System.out.println("----德塔VPCS数据库服务器端口启动:" + port);
 			DetaUtil.initDB();
-			System.out.println("----德塔VPCS数据库服务器DMA确认:成功！");
+			System.out.println("----德塔VPCS数据库服务器DMA确认:成功！");	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,7 +49,7 @@ public class ServerInitController {
 		timeProcess.end();
 		System.out.println("----德塔VPCS数据库服务器启动一切正常-总耗时:" + timeProcess.duration()+ "毫秒");
 		while(true){
-			if(sleeperHall.getThreadsCount() < 1000){
+			if(sleeperHall.getThreadsCount() < 600){
 				Sleeper sleeper = new Sleeper();
 				try {
 					sleeper.hugPillow(sleeperHall, server.accept(), sleeper.hashCode());

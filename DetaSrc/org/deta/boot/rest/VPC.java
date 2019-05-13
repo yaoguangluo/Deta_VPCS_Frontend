@@ -72,6 +72,12 @@ public class VPC {
 		if(string.equalsIgnoreCase("/dataCY")){
 			return RestAskPortImpl.dataCY(data.get("message"));
 		}	
+		if(string.equalsIgnoreCase("/dataXL")){
+			return RestAskPortImpl.dataXL(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataRN")){
+			return RestAskPortImpl.dataRN(data.get("message"));
+		}	
 		if(string.equalsIgnoreCase("/dataCG")){
 			return RestAskPortImpl.dataCG(data.get("message"));
 		}	
@@ -80,6 +86,18 @@ public class VPC {
 		}	
 		if(string.equalsIgnoreCase("/dataCL")){
 			return RestAskPortImpl.dataCL(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataXX")){
+			return RestAskPortImpl.dataXX(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataHF")){
+			return RestAskPortImpl.dataHF(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataCP")){
+			return RestAskPortImpl.dataCP(data.get("message"));
+		}	
+		if(string.equalsIgnoreCase("/dataZF")){
+			return RestAskPortImpl.dataZF(data.get("message"));
 		}	
 		return "";
 	}
