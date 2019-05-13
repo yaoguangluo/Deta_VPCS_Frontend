@@ -1,4 +1,4 @@
-# Deta_VPCS_Frontend 1.0版本
+# Deta_VPCS_Frontend 1.1版本
 🔥 Tiny VPCS socket HTTP TCP rest server size 10kb， boot 9ms / 超轻量，微型原生套接字服务器的前端应用实例。德塔官方已经采用该项目: http://tinos.qicp.vip/
 
 ### 新开一个用于前端vpc部署，这个架构通过原生的调用socket 握手协议进行多耦合分法路由实现。该架构亮点为轻巧，高速，原生无插件，将任务和资源分开，同时将控制和处理分开。 基于VPCS的控制思想，将js和html进行response，全面支持angular，整个前端架构6kb，启动9毫秒，打破市面上重型服务器结构模式。祝互联网程序员2019新年快乐！
